@@ -13,12 +13,13 @@ Le but de ce guide stylistique est de proposer des conseils sur le développemen
 les conventions que j'utilise et, plus important encore, les raisons des choix que j'ai pris.
 
 ## Supprématie de la communauté et Remerciements
-Je jamais travailler dans le vide. J'ai trouvé que la communauté AngularJS est un group incroyable qui a a coeur de
+Ne jamais travailler dans le vide. J'ai trouvé que la communauté AngularJS est un groupe incroyable qui a à coeur de
 partager les expériences. Ainsi, un ami et expert AngularJS Todd Motto et moi avons collaboré sur de nombreux styles et
-conventions. Nous sommes d'accord sur la plupart, et nous divergeons sur certains. Je vous encourage à visiter [les guideslines de Todd](https://github.com/toddmotto/angularjs-styleguide)
-pour vous faire un sentiment sur son approche et en quoi elle est comparable.
+conventions. Nous sommes d'accord sur la plupart, et nous divergeons sur d'autres. Je vous encourage à visiter [les
+guideslines de Todd](https://github.com/toddmotto/angularjs-styleguide) pour vous faire un sentiment sur son approche et
+en quoi elle est comparable.
 
-De nombreux de mes styles proviennent des nombreuses scéances de pair programming que [Ward Bell](http://twitter.com/wardbell)
+De nombreux de mes styles proviennent des maintes scéances de pair programming que [Ward Bell](http://twitter.com/wardbell)
 et moi avons eu. Alors que nous n'étions pas toujours d'accord, mon ami Ward a assurément contribué à influencer
 l'évolution ultime de ce guide.
 
@@ -35,7 +36,7 @@ sont maintenues par la communauté et peuvent être trouvées ici.
 
 ## Table des matières
 
-  1. [Responsabilité Unique](#single-responsibility)
+  1. [Responsabilité Unique](#responsabilité-unique)
   1. [IIFE](#iife)
   1. [Modules](#modules)
   1. [Controllers](#controllers)
@@ -117,7 +118,7 @@ sont maintenues par la communauté et peuvent être trouvées ici.
   function someFactory() { }
   ```
 
-**[Retour en haut de page](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## IIFE
 ### Les Closures JavaScript
