@@ -128,12 +128,12 @@ sont maintenues par la communauté et peuvent être trouvées ici.
     Fonction Immédiatement Invoquée.
 
   *Pourquoi ?* : Une IIFE supprime les variables du scope global. Cela aide à éviter que les déclarations de variables
-    et de fonctions ne vivent plus longtemps qu'attendu dans le scope global, ce qui aide aussi à éviter les collisions
-    de variables.
+  et de fonctions ne vivent plus longtemps qu'attendu dans le scope global, ce qui aide aussi à éviter les collisions de
+  variables.
 
   *Pourquoi ?* : Lorsque votre code est minifié et embarqué dans un unique fichier pour le déploiement dans un serveur
-    de production, vous pouvez avoir des collisions de variables et de nombreuses variables globales. Une IIFE protège
-    contre ces derniers en fournissant un scope de variable pour chaque fichier.
+  de production, vous pouvez avoir des collisions de variables et de nombreuses variables globales. Une IIFE protège
+  contre ces derniers en fournissant un scope de variable pour chaque fichier.
 
   ```javascript
   /* éviter */
@@ -142,7 +142,7 @@ sont maintenues par la communauté et peuvent être trouvées ici.
       .module('app')
       .factory('logger', logger);
 
-  // logger function is added as a global variable
+  // la fonction de logger est ajoutée en tant que variable globale
   function logger() { }
 
   // storage.js
@@ -150,7 +150,7 @@ sont maintenues par la communauté et peuvent être trouvées ici.
       .module('app')
       .factory('storage', storage);
 
-  // storage function is added as a global variable
+  // la fonction storage est ajoutée en tant que variable globale
   function storage() { }
   ```
 
@@ -186,6 +186,7 @@ sont maintenues par la communauté et peuvent être trouvées ici.
   ```
 
   - Note : Pour des raisons de concision seulement, le reste des examples de ce guide peuvent avoir omis la syntaxe
+    IIFE.
 
   - Note : Les IIFE empêchent le code code de test d'atteindre des membres privés comme des expressions régulières ou
     des fonctions helper ce qui est bon pour tester unitairement directement indépendamment. Cependant, vous pouvez les
