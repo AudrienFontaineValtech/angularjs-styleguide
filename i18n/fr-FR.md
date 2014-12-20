@@ -232,7 +232,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   function SomeController() { }
   ```
 
-### Setting contre Getting
+### Setting ou Getting
 ###### [Style [Y023](#style-y023)]
 
   - Ne settez qu'une fois et gettez pour toutes les autres instances.
@@ -242,7 +242,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 	  - Utilisez `angular.module('app', []);` pour setter un module.
 	  - Utilisez `angular.module('app');` pour getter un module.
 
-### Fonctions Nommées contre Anonymes
+### Fonctions Nommées ou Anonymes
 ###### [Style [Y024](#style-y024)]
 
   - Utilisez des fonctions nommées au lieu de passer une fonction anonyme comme callback.
@@ -315,8 +315,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   *Pourquoi ?* : `controllerAs` est un sucre syntaxique sur le `$scope`. Vous pouvez toujours vous relier à la Vue et toujours accéder aux métodes du `$scope`.
 
-  *Pourquoi ?* : Permet d'éviter la tentation d'utiliser les méthodes du `$scope` à l'intérieur d'un controlleur alors qu'il serait par ailleurs meilleur de les éviter ou de les déplacer dans une factory. Considérons utiliser le `$scope` dans une factory, ou seulement si nécessaire dans un controlleur. Par exemple lorsqu'il faut publier ou souscrire des événements en utilisant
-[`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), ou [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considérez déplacer ces usages dans une factory et les invoquer depuis le controlleur.
+  *Pourquoi ?* : Permet d'éviter la tentation d'utiliser les méthodes du `$scope` à l'intérieur d'un controlleur alors qu'il serait par ailleurs meilleur de les éviter ou de les déplacer dans une factory. Considérez utiliser le `$scope` dans une factory, ou seulement si nécessaire dans un controlleur. Par exemple lorsqu'il faut publier ou souscrire des événements en utilisant [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), ou [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considérez déplacer ces usages dans une factory et les invoquer depuis le controlleur.
 
   ```javascript
   /* à éviter */
@@ -334,15 +333,15 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-### controllerAs with vm
+### controllerAs avec vm
 ###### [Style [Y032](#style-y032)]
 
-  - Use a capture variable for `this` when using the `controllerAs` syntax. Choose a consistent variable name such as `vm`, which stands for ViewModel.
+  - Utilisez une variable de capture pour `this` quand vous utilisez la syntaxe `controllerAs`. Choisissez un nom de variable consistant tel que `vm`, qui signifie ViewModel.
 
-  *Why?*: The `this` keyword is contextual and when used within a function inside a controller may change its context. Capturing the context of `this` avoids encountering this problem.
+  *Pourquoi ?* : Le mot clé `this` est contextuel et son utilisation au sein d'une fonction à l'intérieur d'un controlleur pourrait changer son contexte. Cpature le contexte de `this` évite de rencontrer ce problème.
 
   ```javascript
-  /* avoid */
+  /* à éviter */
   function Customer() {
       this.name = {};
       this.sendMessage = function() { };
@@ -350,7 +349,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ```
 
   ```javascript
-  /* recommended */
+  /* recommandé */
   function Customer() {
       var vm = this;
       vm.name = {};
@@ -358,14 +357,14 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
+  Note : Vous pouvez évitez n'importe quel avertissement [jshint](http://www.jshint.com/) en plaçant le commentaire ci-dessous au dessus de la ligne de code. Cependant, ce n'est pas nécesaire lorsque la fonction est nommée en utilisant la CasseEnMajuscule, puisque cette convention signifie que c'est une fonction constructeur, ce qu'est un controlleur en Angular.
 
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
 
-  Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
+  Note : Lors de la création de watchs dans un controlleur en utilisant `controller as`, vous pouvez watcher les membres `vm.*` en utilisant la syntaxe suivante. (Créez des watchs avec prudence puisqu'ils ajoutent plus de charge au cycle de digest.)
 
   ```html
   <input ng-model="vm.title"/>
