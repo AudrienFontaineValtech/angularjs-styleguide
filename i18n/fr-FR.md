@@ -59,7 +59,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   L'exemple suivant définit le module `app` et ses dépendances, définit un controlleur, et définit une factory le tout dans le même fichier.
 
   ```javascript
-  /* éviter */
+  /* à éviter */
   angular
     	.module('app', ['ngRoute'])
     	.controller('SomeController', SomeController)
@@ -115,7 +115,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   *Pourquoi ?* : Lorsque votre code est minifié et embarqué dans un unique fichier pour le déploiement dans un serveur de production, vous pouvez avoir des collisions de variables et de nombreuses variables globales. Une IIFE protège contre ces derniers en fournissant un scope de variable pour chaque fichier.
 
   ```javascript
-  /* éviter */
+  /* à éviter */
   // logger.js
   angular
       .module('app')
@@ -187,7 +187,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   *Pourquoi ?* : Avec 1 composant par fichier, on ne devrait pas avoir besoin d'introduire une variable pour le module.
 
   ```javascript
-  /* éviter */
+  /* à éviter */
   var app = angular.module('app', [
       'ngAnimate',
       'ngRoute',
@@ -199,7 +199,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   Utiliser à la place la syntaxe setter simple.
 
   ```javascript
-  /* recommended */
+  /* recommandé */
   angular
     	.module('app', [
           'ngAnimate',
@@ -212,12 +212,12 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 ### Getters
 ###### [Style [Y022](#style-y022)]
 
-  - When using a module, avoid using a variable and instead use   chaining with the getter syntax.
+  - Lorsque vous utilisez un module, évitez d'utiliser une variable en utilisant plutôt le chaînage avec la syntaxe du getter.
 
-  *Why?* : This produces more readable code and avoids variable collisions or leaks.
+  *Pourquoi ?* : Cela produit du code plus lisible et évite les collisions de variable ou les fuites.
 
   ```javascript
-  /* avoid */
+  /* à éviter */
   var app = angular.module('app');
   app.controller('SomeController', SomeController);
 
@@ -225,7 +225,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ```
 
   ```javascript
-  /* recommended */
+  /* recommandé */
   angular
       .module('app')
       .controller('SomeController', SomeController);
@@ -233,25 +233,25 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   function SomeController() { }
   ```
 
-### Setting vs Getting
+### Setting contre Getting
 ###### [Style [Y023](#style-y023)]
 
-  - Only set once and get for all other instances.
+  - Ne `settez` qu'une fois et `gettez` pour toutes les autres instances.
 
-	*Why?*: A module should only be created once, then retrieved from that point and after.
+  *Pourquoi ?* : Un module ne devrait être créé qu'une seule fois, et ensuite récupéré à partir de ce point et après.
 
-	  - Use `angular.module('app', []);` to set a module.
-	  - Use  `angular.module('app');` to get a module.
+	  - Utilisez `angular.module('app', []);` pour setter un module.
+	  - Utilisez `angular.module('app');` pour getter un module.
 
-### Named vs Anonymous Functions
+### Fonctions Nommées contre Anonymes
 ###### [Style [Y024](#style-y024)]
 
-  - Use named functions instead of passing an anonymous function in as a callback.
+  - Utilisez des fonctions nommées au lieu de passer une fonction anonyme comme callback.
 
-	*Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
+  *Pourquoi ?* : Celà produit du code plus lisible, est plus facile à débugguer, et réduit la quantité de code callback imbriqué.
 
   ```javascript
-  /* avoid */
+  /* éviter */
   angular
       .module('app')
       .controller('Dashboard', function() { })
@@ -259,7 +259,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ```
 
   ```javascript
-  /* recommended */
+  /* recommendé */
 
   // dashboard.js
   angular
@@ -278,7 +278,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   function logger() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Retour en haut de page](#table-des-matières)**
 
 ## Controllers
 
