@@ -133,7 +133,6 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   function storage() { }
   ```
 
-
   ```javascript
   /**
    * recommandé
