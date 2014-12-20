@@ -307,19 +307,20 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   </div>
   ```
 
-### controllerAs Controller Syntax
+### La Syntaxe de Controlleur controllerAs
 ###### [Style [Y031](#style-y031)]
 
-  - Use the `controllerAs` syntax over the `classic controller with $scope` syntax.
+  - Utilisez la syntaxe `controllerAs` au lieu de la syntaxe de `controlleur classique avec $scope`.
 
-  - The `controllerAs` syntax uses `this` inside controllers which gets bound to `$scope`
+  - La syntaxe `controllerAs` utilise `this` à l'intérieur des controlleurs qui se font relier au `$scope`.
 
-  *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.
+  *Pourquoi ?* : `controllerAs` est un sucre syntaxique sur le `$scope`. Vous pouvez toujours vous relier à la Vue et toujours accéder aux métodes du `$scope`.
 
-  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move them to a factory. Consider using `$scope` in a factory, or if in a controller just when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) consider moving these uses to a factory and invoke from the controller.
+  *Pourquoi ?* : Permet d'éviter la tentation d'utiliser les méthodes du `$scope` à l'intérieur d'un controlleur alors qu'il serait par ailleurs meilleur de les éviter ou de les déplacer dans une factory. Considérons utiliser le `$scope` dans une factory, ou seulement si nécessaire dans un controlleur. Par exemple lorsqu'il faut publier ou souscrire des événements en utilisant
+[`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), ou [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considérez déplacer ces usages dans une factory et les invoquer depuis le controlleur.
 
   ```javascript
-  /* avoid */
+  /* à éviter */
   function Customer($scope) {
       $scope.name = {};
       $scope.sendMessage = function() { };
@@ -327,7 +328,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ```
 
   ```javascript
-  /* recommended - but see next section */
+  /* recommandé - mais voir la section suivante */
   function Customer() {
       this.name = {};
       this.sendMessage = function() { };
