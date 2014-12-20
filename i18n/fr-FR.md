@@ -9,7 +9,7 @@ Si vous cherchez un guide d'un certain point de vue stylistique pour la syntaxe,
 Le but de ce guide stylistique est de proposer des conseils sur le développement d'applications AngularJS en montrant les conventions que j'utilise et, plus important encore, les raisons des choix que j'ai pris.
 
 ## Supprématie de la Communauté et Remerciements
-Ne jamais travailler dans le vide. J'ai trouvé que la communauté AngularJS est un groupe incroyable qui a à coeur de partager les expériences. Ainsi, un ami et expert AngularJS Todd Motto et moi avons collaboré sur de nombreux styles et conventions. Nous sommes d'accord sur la plupart, et nous divergeons sur d'autres. Je vous encourage à visiter [les guideslines de Todd](https://github.com/toddmotto/angularjs-styleguide) pour vous faire un sentiment sur son approche et en quoi elle est comparable.
+Ne jamais travailler dans le vide. J'ai trouvé que la communauté AngularJS est un incroyable groupe qui a à coeur de partager leurs expériences. Ainsi, un ami et expert AngularJS Todd Motto et moi avons collaboré sur de nombreux styles et conventions. Nous sommes d'accord sur la plupart, et nous divergeons sur d'autres. Je vous encourage à visiter [les guideslines de Todd](https://github.com/toddmotto/angularjs-styleguide) pour vous faire un sentiment sur son approche et en quoi elle est comparable.
 
 De nombreux de mes styles proviennent des maintes scéances de pair programming que [Ward Bell](http://twitter.com/wardbell) et moi avons eu. Alors que nous n'étions pas toujours d'accord, mon ami Ward a assurément contribué à influencer l'évolution ultime de ce guide.
 
@@ -338,7 +338,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
   - Utilisez une variable de capture pour `this` quand vous utilisez la syntaxe `controllerAs`. Choisissez un nom de variable consistant tel que `vm`, qui signifie ViewModel.
 
-  *Pourquoi ?* : Le mot clé `this` est contextuel et son utilisation au sein d'une fonction à l'intérieur d'un controlleur pourrait changer son contexte. Cpature le contexte de `this` évite de rencontrer ce problème.
+  *Pourquoi ?* : Le mot clé `this` est contextuel et son utilisation au sein d'une fonction à l'intérieur d'un controlleur pourrait changer son contexte. Capturer le contexte de `this` évite de rencontrer ce problème.
 
   ```javascript
   /* à éviter */
@@ -382,14 +382,15 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-### Bindable Members Up Top
+### Les Membres Bindable au Début
 ###### [Style [Y033](#style-y033)]
 
-  - Place bindable members at the top of the controller, alphabetized, and not spread through the controller code.
+  - Placez les membres bindables au début du controlleur, par ordre alphabétique, et non pas dispersés à travers le code du controlleur.
 
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View.
+  *Pourquoi ?* : Placer les membres bindables au début permet de faciliter la lecture et vous aide à identifier instantanément quels membres du controlleur peut être bindé et utilisés dans la Vue.
 
-    *Why?*: Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read.
+  *Pourquoi ?* : Placer les fonction anonymes sur la même ligne peut être facile, mais lorsque ces fonctions ont plus d'une ligne de code elles peuvent réduire la lisibilité. Définir les fonctions sous les membres bindables (les fonctions seront hissées) déplace les détails d'implémentation en bas, guardant les membres bindables en haut,
+  Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read.
 
   ```javascript
   /* avoid */
@@ -435,12 +436,12 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
       }
   ```
 
-    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
+    ![Les Controlleur Utilisant "Au dessus de la Réduction"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
 
-  Note: If the function is a 1 liner consider keeping it right up top, as long as readability is not affected.
+  Note : Si la fonction est un one-liner, considérez de la garder bien en haut, tant que la lisibilité n'est pas affectée.
 
   ```javascript
-  /* avoid */
+  /* à éviter */
   function Sessions(data) {
       var vm = this;
 
@@ -460,7 +461,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ```
 
   ```javascript
-  /* recommended */
+  /* recommandé */
   function Sessions(dataservice) {
       var vm = this;
 
