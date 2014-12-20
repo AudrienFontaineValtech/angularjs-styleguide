@@ -24,7 +24,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   1. [Responsabilité Unique](#responsabilité-unique)
   1. [IIFE](#iife)
   1. [Modules](#modules)
-  1. [Controllers](#controllers)
+  1. [Controlleurs](#controlleurs)
   1. [Services](#services)
   1. [Factories](#factories)
   1. [Data Services](#data-services)
@@ -196,7 +196,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   ]);
   ```
 
-  Utiliser à la place la syntaxe setter simple.
+  Utilisez à la place la syntaxe setter simple.
 
   ```javascript
   /* recommandé */
@@ -236,7 +236,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 ### Setting contre Getting
 ###### [Style [Y023](#style-y023)]
 
-  - Ne `settez` qu'une fois et `gettez` pour toutes les autres instances.
+  - Ne settez qu'une fois et gettez pour toutes les autres instances.
 
   *Pourquoi ?* : Un module ne devrait être créé qu'une seule fois, et ensuite récupéré à partir de ce point et après.
 
@@ -251,7 +251,7 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   *Pourquoi ?* : Celà produit du code plus lisible, est plus facile à débugguer, et réduit la quantité de code callback imbriqué.
 
   ```javascript
-  /* éviter */
+  /* à éviter */
   angular
       .module('app')
       .controller('Dashboard', function() { })
@@ -280,28 +280,28 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
 
 **[Retour en haut de page](#table-des-matières)**
 
-## Controllers
+## Controlleurs
 
-### controllerAs View Syntax
+### La Syntaxe Vue controllerAs
 ###### [Style [Y030](#style-y030)]
 
-  - Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax.
+  - Utilisez la syntaxe [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) au lieu de la syntaxe de `controlleur classique avec $scope`.
 
-	*Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`.
+	*Pourquoi ?* : Les controlleurs sont constuits, "new-és", and fournissent une unique nouvelle instance, et la syntaxe `controllerAs` est plus proche de celle d'un contructeur Javascript que la `syntaxe $scope classique`.
 
-	*Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
+	*Pourquoi ?* : Il promeut l'usage du binding entre un objet avec "point" et la Vue (ex. `customer.name` au lieu de `name`), ce qui est plus contextuel, plus facile à lire, et évite tout problème de référence qui peut arriver sans "point".
 
-	*Why?*: Helps avoid using `$parent` calls in Views with nested controllers.
+	*Pourquoi ?* : Permet d'éviter l'usage des appels à `$parent` dans les Vues avec des controlleurs imbriqués.
 
   ```html
-  <!-- avoid -->
+  <!-- à éviter -->
   <div ng-controller="Customer">
       {{ name }}
   </div>
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- recommendé -->
   <div ng-controller="Customer as customer">
      {{ customer.name }}
   </div>
