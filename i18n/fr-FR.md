@@ -466,31 +466,31 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
       var vm = this;
 
       vm.gotoSession = gotoSession;
-      vm.refresh = dataservice.refresh; // 1 liner is OK
+      vm.refresh = dataservice.refresh; // Le one-liner est acceptable
       vm.search = search;
       vm.sessions = [];
       vm.title = 'Sessions';
   ```
 
-### Function Declarations to Hide Implementation Details
+### Déclaration de Fonctions pour Cacher les Détails d'Implémentation
 ###### [Style [Y034](#style-y034)]
 
-  - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Utilisez les déclarations de fonctions pour cacher les détails d'implémentation. Gardez vos membres bindables tout en haut. Quand vous avez besoin de binder une fonction dans un controlleur, faites-la pointer vers la déclaration de la fonction plus bas dans le fichier. Ceci est directement lié à la section des Membres Bindable au Début. Pour plus de détails, vous pouvez lire [cet article](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
+    *Pourquoi ?* : Placer les membres bindables en haut rend plus facile la lecture et vous aide instantanément à identifier quels membres du controlleur peuvent être bindés et utilisés dans la Vue. (Même chose que plus haut.)
 
-    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    *Pourquoi ?* : Placer les détails d'implémentation d'une fonction plus bas dans le fichier déplace cette complexité en dehors du regard ainsi vous pouvez ne voir que les choses importantes en haut.
 
-    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    *Pourquoi ?* : Les déclarations de fichiers sont remontées donc il n'y a aucun problème à utiliser une fonction avant qu'elle ne soit définie (alors que ça le serait avec les expressions de fonction).
 
-    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.
+    *Pourquoi ?* : Vous ne vous préocuperez plus des déclarations de fonctions déplaçant `var a` avant `var b` cassant ainsi votre code car `a` dépend de `b`.
 
-    *Why?*: Order is critical with function expressions
+    *Pourquoi ?* : L'ordre est critique avec les expressions de fonction
 
   ```javascript
   /**
-   * avoid
-   * Using function expressions.
+   * à éviter
+   * L'utilisation des expressions de fonction.
    */
   function Avengers(dataservice, logger) {
       var vm = this;
@@ -516,13 +516,13 @@ Alors que ce guide explique le *quoi*, le *pourquoi* et le *comment*, il m'a ét
   }
   ```
 
-  Notice that the important stuff is scattered in the preceding example. In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just easier to read.
+  Remarquez que les choses importantes sont dispersées dans l'exemple précédent. Dans l'exemple ci-dessous, remarquez que les choses importantes sont tout en haut. Par exemple, les membres bindés au controlleur tels que `vm.avengers` et `vm.title`. Les détails d'implémentation sont plus bas dessous. C'est simplement plus facile à lire.
 
   ```javascript
   /*
-   * recommend
-   * Using function declarations
-   * and bindable members up top.
+   * recommandé
+   * L'utilisation des déclarations de fonction
+   * et les membres bindables tout en haut.
    */
   function Avengers(dataservice, logger) {
       var vm = this;
